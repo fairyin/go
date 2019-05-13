@@ -34,3 +34,58 @@
 ## go env 查看当前go的环境变量
 ## go list 列出当前全部安装的package
 ## go run 编译并运行go程序
+
+# Go 语言基础
+* 关键字
+> `break`    `default`     `func`   `interface` `select`
+> `case`     `defer`       `go`     `map`       `struct`
+> `chan`     `else`        `goto`   `package`   `switch`
+> `const`    `fallthrough` `if`     `range`     `type`
+> `continue` `for`         `import` `return`    `var`
+
+* Go 程序设计规则
+> 大写字母开头的变量是可导出的，其他包可以读取，是公用变量
+> 小写字母开头的就是不可导出的，是私有变量
+> 大写字母开头的函数也是一样；相当于 public 和 private
+
+* array
+> 数组 `var arr [10]int` 声明了一个长度为10的int类型的数组
+
+* slice
+> 动态数组；引用类型，当引用改变其中元素值时，其它所有的引用都会改变改值，
+> `len` 获取 slice 的长度
+> `cap` 获取 slice 的最大容量
+> `append` 向 slice 里面追加一个或多个元素，然后返回一个和 slice 一样类型的 slice
+> `copy` 函数 copy 从源 slice 的 src 中复制元素到目标 dst，并且返回复制的元素个数
+
+* map
+> map 是无序的，每次打印出来的结果都不一样，不能通过 index 来获取，必须通过 key 来获取
+> map 的长度是不固定的，是一种引用类型
+> 内置的 `len` 函数 返回 map 所有 key 的数量
+> 使用 `delete` 删除 map 中的元素
+
+* make、new
+> `make` 用于内建类型（map，slice和channel）的内存分配。
+> `new`  用于各种类型的内存分配
+> new 返回指针；
+
+## 流程和函数
+
+### 流程控制
+* 条件判断
+* 循环控制
+* 无条件跳转
+
+> `if` Go的if语句里允许声明一个变量，这个变量的作用域只能在改条件逻辑块内，其他地方就不起作用了
+> `goto` 用goto跳转必须在当前函数内定义的标签
+> `for` 既可以用来循环读取数据，又可以当做while来控制逻辑，还能迭代操作
+> `switch`
+
+### 函数
+* 关键字 func 用来声明一个函数
+* 函数可以有一个或者多个参数，每个参数都带有类型，通过`,`分割
+* 函数可以返回多个值
+* 变参
+* 传值与指针
+> 传指针使得多个函数能操作同一个对象
+> 传指针比较轻量级（8bytes），只是传内存地址，可以用指针传递体积大的结构体。如果用参数值传递的话，在每次copy上就会花费相对较多的系统开销。传递大的结构体使用指针。
